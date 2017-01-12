@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/jquery-ui-1.9.2.min.js"></script>
+    <script src="~/Scripts/jtable/jquery.jtable.js"></script>
+    
+    <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Scripts/jtable/themes/metro/jtable_metro_base.css" rel="stylesheet" />
+    <link href="~/Scripts/jtable/themes/metro/darkgray/jtable.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+</head>
+<body>
+   
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("CSW Books Store", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Read me", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Authors", "Index", "Author")</li>
+                    <li>@Html.ActionLink("Categories", "Index", "Category")</li>
+                    <li>@Html.ActionLink("Books", "Index", "Book")</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    <div class="container body-content">
+        <div class="container main">
+            @RenderBody()
+        </div>
+
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - CSW Test</p>
+        </footer>
+    </div>
+
+</body>
+</html>

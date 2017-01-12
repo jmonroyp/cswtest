@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "Authors";
+}
+
+<div id="AuthorTableContainer"></div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#AuthorTableContainer').jtable({
+            title: 'Authors',
+            columnResizable: false,
+            paging: true,
+            sorting: false,
+            pageList: 'minimal',
+            actions: {
+                listAction: '@Url.Action("Get", "Author")',
+                createAction: '@Url.Action("Post", "Author")',
+                updateAction: '@Url.Action("Put", "Author")',
+                deleteAction: '@Url.Action("Delete", "Author")'
+            },
+            fields: {
+                Id: {
+                    key: true,
+                    list: false
+                },
+                Name: {
+                    title: 'Book Name',
+                    width: '40%'
+                }
+            }
+        });
+
+        $('#AuthorTableContainer').jtable('load');
+    });
+
+
+</script>

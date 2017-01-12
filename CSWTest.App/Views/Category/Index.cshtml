@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "Categorys";
+}
+
+<div id="CategoryTableContainer"></div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#CategoryTableContainer').jtable({
+            title: 'Categories',
+            columnResizable: false,
+            paging: true,
+            sorting: false,
+            pageList: 'minimal',
+            actions: {
+                listAction: '@Url.Action("Get", "Category")',
+                createAction: '@Url.Action("Post", "Category")',
+                updateAction: '@Url.Action("Put", "Category")',
+                deleteAction: '@Url.Action("Delete", "Category")'
+            },
+            fields: {
+                Id: {
+                    key: true,
+                    list: false
+                },
+                Name: {
+                    title: 'Category Name',
+                    width: '40%'
+                }
+            }
+        });
+
+        $('#CategoryTableContainer').jtable('load');
+    });
+
+
+</script>

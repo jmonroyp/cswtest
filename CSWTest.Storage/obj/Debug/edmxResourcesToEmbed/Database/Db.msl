@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ContextStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="Authors1">
+      <EntityTypeMapping TypeName="Context.Author">
+        <MappingFragment StoreEntitySet="authors">
+          <ScalarProperty Name="Id" ColumnName="id" />
+          <ScalarProperty Name="Name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Books1">
+      <EntityTypeMapping TypeName="Context.Book">
+        <MappingFragment StoreEntitySet="books">
+          <ScalarProperty Name="Id" ColumnName="id" />
+          <ScalarProperty Name="Name" ColumnName="name" />
+          <ScalarProperty Name="Summary" ColumnName="summary" />
+          <ScalarProperty Name="Price" ColumnName="price" />
+          <ScalarProperty Name="Picture" ColumnName="picture" />
+          <ScalarProperty Name="IdAuthor" ColumnName="id_author" />
+          <ScalarProperty Name="IdCategory" ColumnName="id_category" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categories1">
+      <EntityTypeMapping TypeName="Context.Category">
+        <MappingFragment StoreEntitySet="categories">
+          <ScalarProperty Name="Id" ColumnName="id" />
+          <ScalarProperty Name="Name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

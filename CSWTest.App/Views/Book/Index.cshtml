@@ -1,0 +1,121 @@
+﻿
+@{
+    ViewBag.Title = "Books";
+}
+
+
+<div id="BookTableContainer"></div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#BookTableContainer').jtable({
+            title: 'Books',
+            columnResizable: false,
+            paging: true,
+            sorting: false,
+            pageList: 'minimal',
+            actions: {
+                listAction: '@Url.Action("Get", "Book")',
+                @*createAction: '@Url.Action("Post", "Book")',*@
+                createAction: function (data) {
+                    var deferred = $.Deferred();
+
+                    // Capture form submit result from the hidden iframe
+                    $("#postiframe").load(function () {
+                        iframeContents = $("#postiframe").contents().find("body").text();
+                        var result = $.parseJSON(iframeContents);
+                        deferred.resolve(result);
+                    });
+
+                    // Submit form with file upload settings
+                    var form = $('#jtable-create-form');
+                    form.unbind("submit");
+                    form.attr("action", "@Url.Action("Post", "Book")");
+                    form.attr("method", "post");
+                    form.attr("enctype", "multipart/form-data");
+                    form.attr("encoding", "multipart/form-data");
+                    form.attr("target", "postiframe");
+                    form.submit();
+
+                    return deferred;
+                },
+                @*updateAction: '@Url.Action("Put", "Book")',*@
+                updateAction: function (data) {
+                    var deferred = $.Deferred();
+                    var obj = JSON.parse('{"' + decodeURI(data).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g, '":"') + '"}')
+                    // Capture form submit result from the hidden iframe
+                    $("#postiframe").load(function () {
+                        iframeContents = $("#postiframe").contents().find("body").text();
+                        var result = $.parseJSON(iframeContents);
+                        deferred.resolve(result);
+                    });
+
+                    // Submit form with file upload settings
+                    var form = $('#jtable-edit-form');
+                    form.unbind("submit");
+                    form.attr("action", "@Url.Action("Put", "Book")");
+                    form.attr("method", "post");
+                    form.attr("enctype", "multipart/form-data");
+                    form.attr("encoding", "multipart/form-data");
+                    form.attr("target", "postiframe");
+                    form.submit();
+
+                    return deferred;
+                },
+                deleteAction: '@Url.Action("Delete", "Book")'
+            },
+            fields: {
+                Id: {
+                    key: true,
+                    list: false
+                },
+                Name: {
+                    title: 'Book Name'
+                },
+                Summary: {
+                    title: 'Summary'
+                },
+                IdAuthor: {
+                    title: 'Author',
+                    options: '@Url.Action("GetOptions", "Author")',
+                    list: true
+                },
+                IdCategory: {
+                    title: 'Category',
+                    options: '@Url.Action("GetOptions", "Category")',
+                    list: true
+                },
+                Price: {
+                    title: 'Price'
+                },
+                DocBytes: {
+                    title: "Picture",
+                    list: false,
+                    create: true,
+                    input: function (data) {
+                        return '<input id="DocBytes" type="file" name="DocBytes" /><iframe name="postiframe" id="postiframe" style="display: none" />';
+                    }
+                },
+                Image: {
+                    title: "Image",
+                    list: true,
+                    create: false,
+                    edit: false,
+                    display: function (data) {
+                        if (data.record.Picture != null) {
+                            return '<img class="preview-img" src="data:image/jpeg;base64,' + data.record.Picture + '" />';
+                        }
+                        else {
+                            return '<div class="no-image"></div> ';
+                        }
+                    }
+                }
+            }
+        });
+
+        $('#BookTableContainer').jtable('load');
+    });
+
+
+</script>
+

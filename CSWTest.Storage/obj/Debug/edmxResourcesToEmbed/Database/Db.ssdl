@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Context.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="authors">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="books">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="summary" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="price" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="picture" Type="nvarchar(max)" />
+    <Property Name="id_author" Type="uniqueidentifier" />
+    <Property Name="id_category" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="categories">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <Association Name="FK__books__id_author__1A14E395">
+    <End Role="authors" Type="Self.authors" Multiplicity="0..1" />
+    <End Role="books" Type="Self.books" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="authors">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="books">
+        <PropertyRef Name="id_author" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__books__id_catego__1B0907CE">
+    <End Role="categories" Type="Self.categories" Multiplicity="0..1" />
+    <End Role="books" Type="Self.books" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="categories">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="books">
+        <PropertyRef Name="id_category" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ContextStoreContainer">
+    <EntitySet Name="authors" EntityType="Self.authors" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="books" EntityType="Self.books" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="categories" EntityType="Self.categories" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__books__id_author__1A14E395" Association="Self.FK__books__id_author__1A14E395">
+      <End Role="authors" EntitySet="authors" />
+      <End Role="books" EntitySet="books" />
+    </AssociationSet>
+    <AssociationSet Name="FK__books__id_catego__1B0907CE" Association="Self.FK__books__id_catego__1B0907CE">
+      <End Role="categories" EntitySet="categories" />
+      <End Role="books" EntitySet="books" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
