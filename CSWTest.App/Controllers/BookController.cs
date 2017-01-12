@@ -36,6 +36,10 @@ namespace CSWTest.App.Controllers
         {
             try
             {
+                if (item.IdAuthor == null)
+                    throw new Exception("Author is expected.");
+                if (item.IdCategory == null)
+                    throw new Exception("Category is expected.");
                 item.Id = Guid.NewGuid();
                 item.Picture = Utils.WebUtils.GetB64File(DocBytes);
                 new BookService().Upsert(item);

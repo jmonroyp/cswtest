@@ -3,7 +3,9 @@
     ViewBag.Title = "Books";
 }
 
-
+<div class="filter-bar">
+    <div><</div>
+</div>
 <div id="BookTableContainer"></div>
 
 <script type="text/javascript">
@@ -16,7 +18,6 @@
             pageList: 'minimal',
             actions: {
                 listAction: '@Url.Action("Get", "Book")',
-                @*createAction: '@Url.Action("Post", "Book")',*@
                 createAction: function (data) {
                     var deferred = $.Deferred();
 
@@ -39,7 +40,6 @@
 
                     return deferred;
                 },
-                @*updateAction: '@Url.Action("Put", "Book")',*@
                 updateAction: function (data) {
                     var deferred = $.Deferred();
                     var obj = JSON.parse('{"' + decodeURI(data).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g, '":"') + '"}')
