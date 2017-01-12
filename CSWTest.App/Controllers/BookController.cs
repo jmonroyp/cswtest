@@ -55,6 +55,11 @@ namespace CSWTest.App.Controllers
         {
             try
             {
+                if (item.IdAuthor == null)
+                    throw new Exception("Author is expected.");
+                if (item.IdCategory == null)
+                    throw new Exception("Category is expected.");
+
                 var picture = Utils.WebUtils.GetB64File(DocBytes);
                 if (!string.IsNullOrEmpty(picture))
                     item.Picture = picture;

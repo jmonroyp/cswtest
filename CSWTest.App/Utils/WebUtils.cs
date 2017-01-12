@@ -10,19 +10,26 @@ namespace CSWTest.App.Utils
     {
         public static string GetB64File(HttpPostedFileBase file)
         {
-            byte[] data;
-            using (Stream inputStream = file.InputStream)
+            try
             {
-                MemoryStream memoryStream = inputStream as MemoryStream;
-                if (memoryStream == null)
+                byte[] data;
+                using (Stream inputStream = file.InputStream)
                 {
-                    memoryStream = new MemoryStream();
-                    inputStream.CopyTo(memoryStream);
+                    MemoryStream memoryStream = inputStream as MemoryStream;
+                    if (memoryStream == null)
+                    {
+                        memoryStream = new MemoryStream();
+                        inputStream.CopyTo(memoryStream);
+                    }
+                    data = memoryStream.ToArray();
                 }
-                data = memoryStream.ToArray();
-            }
 
-            return data != null ? System.Convert.ToBase64String(data) : null;
+                return data != null ? System.Convert.ToBase64String(data) : null;
+            }
+            catch(Exception)
+            {
+                return null;
+            }
         }
     }
 }

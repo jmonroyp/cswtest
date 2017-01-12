@@ -6,3 +6,11 @@ c:\users\jonhd\documents\visual studio 2015\Projects\CSWTest\CSWTest.Storage\bin
 c:\users\jonhd\documents\visual studio 2015\Projects\CSWTest\CSWTest.Storage\obj\Debug\CSWTest.Storage.csprojResolveAssemblyReference.cache
 c:\users\jonhd\documents\visual studio 2015\Projects\CSWTest\CSWTest.Storage\obj\Debug\CSWTest.Storage.dll
 c:\users\jonhd\documents\visual studio 2015\Projects\CSWTest\CSWTest.Storage\obj\Debug\CSWTest.Storage.pdb
+C:\Users\jonhd\Documents\Visual Studio 2015\Projects\CSWTest\cswtest\CSWTest.Storage\bin\Debug\CSWTest.Storage.dll.config
+C:\Users\jonhd\Documents\Visual Studio 2015\Projects\CSWTest\cswtest\CSWTest.Storage\bin\Debug\CSWTest.Storage.dll
+C:\Users\jonhd\Documents\Visual Studio 2015\Projects\CSWTest\cswtest\CSWTest.Storage\bin\Debug\CSWTest.Storage.pdb
+C:\Users\jonhd\Documents\Visual Studio 2015\Projects\CSWTest\cswtest\CSWTest.Storage\bin\Debug\EntityFramework.dll
+C:\Users\jonhd\Documents\Visual Studio 2015\Projects\CSWTest\cswtest\CSWTest.Storage\bin\Debug\EntityFramework.xml
+C:\Users\jonhd\Documents\Visual Studio 2015\Projects\CSWTest\cswtest\CSWTest.Storage\obj\Debug\CSWTest.Storage.csprojResolveAssemblyReference.cache
+C:\Users\jonhd\Documents\Visual Studio 2015\Projects\CSWTest\cswtest\CSWTest.Storage\obj\Debug\CSWTest.Storage.dll
+C:\Users\jonhd\Documents\Visual Studio 2015\Projects\CSWTest\cswtest\CSWTest.Storage\obj\Debug\CSWTest.Storage.pdb
